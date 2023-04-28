@@ -1,13 +1,19 @@
 // Importing the express module
 const express = require('express');
-const app = express();
 
+// Importing the routes to the authors
+const authorsRoutes = require('./routes/authors.routes');
 // Importing the environment variables
 const { PORT } = require('./config/env');
 
-// Setting up the basic route
+const app = express();
+
+app.use(express.json());
+app.use(authorsRoutes);
+
+// Setting up the default route
 app.get('/', (req, res) => {
-    res.end('Setting up the basic structure of a Node.js API');
+    res.status(200).end('Welcome to the TELOS NEWS API');
 });
 
 // Setting up the server
