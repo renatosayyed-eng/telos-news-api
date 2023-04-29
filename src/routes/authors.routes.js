@@ -3,6 +3,9 @@ const { Router } = require('express');
 const routes = Router();
 const { createAuthor, listAuthors, getAuthor, updateAuthor, removeAuthor } = require('../controllers/authors.controller');
 
+// Importing the middleware to verify the authentication
+const { verifyAuthentication } = require('../middlewares/verifyAuthentication');
+
 // Method to get all authors
 routes.get('/authors', listAuthors);
 

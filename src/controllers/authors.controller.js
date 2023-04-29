@@ -3,6 +3,8 @@ const { v4: uuidv4 } = require('uuid');
 
 // Importing the password hashing utility
 const { generateHash } = require('../utils/hashProvider');
+// Importing the helper functions
+const { removePrivateData, verifyEmail } = require('../utils/helpersAuthors');
 
 // Emulating the database - Statefull
 const authors = [
@@ -16,22 +18,6 @@ const authors = [
         updatedAt: new Date(),
     },
 ];
-
-const removePrivateData = (author) => {
-    const { id, email, password, ...rest } = author;
-
-    return rest;
-};
-
-const verifyEmail = (email) => {
-    const author = authors.find((author) => author.email === email);
-
-    if (author) {
-        return true;
-    }
-
-    return false;
-};
 
 const createAuthor = async (req, res) => {
     const { name, biography, email, password } = req.body;
@@ -119,4 +105,5 @@ module.exports = {
     listAuthors,
     updateAuthor,
     removeAuthor,
+    authorsDatabase: authors,
 };
