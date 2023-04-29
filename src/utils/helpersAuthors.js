@@ -1,3 +1,5 @@
+const { authorsDatabase } = require('../controllers/authors.controller');
+
 const removePrivateData = (author) => {
     const { id, email, password, ...rest } = author;
 
@@ -5,7 +7,7 @@ const removePrivateData = (author) => {
 };
 
 const verifyEmail = (email) => {
-    const author = authors.find((author) => author.email === email);
+    const author = authorsDatabase.find((author) => author.email === email);
 
     if (author) {
         return true;
