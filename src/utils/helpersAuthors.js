@@ -6,17 +6,6 @@ const removePrivateData = (author) => {
     return rest;
 };
 
-const verifyEmail = (email) => {
-    const author = authorsDatabase.find((author) => author.email === email);
-
-    if (author) {
-        return true;
-    }
-
-    return false;
-};
-
 module.exports = {
     removePrivateData,
-    verifyEmail,
 };

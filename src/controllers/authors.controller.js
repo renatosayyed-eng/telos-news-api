@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 // Importing the password hashing utility
 const { generateHash } = require('../utils/hashProvider');
 // Importing the helper functions
-const { removePrivateData, verifyEmail } = require('../utils/helpersAuthors');
+const { removePrivateData } = require('../utils/helpersAuthors');
 
 // Emulating the database - Statefull
 const authors = [
@@ -31,8 +31,10 @@ const authors = [
 const createAuthor = async (req, res) => {
     const { name, biography, email, password } = req.body;
 
-    if (verifyEmail(email)) {
-        return res.status(409).json({ message: 'Email already exists' });
+    const emailAlreadyInUse = authors.some((author) => author.email === email);
+
+    if (emailAlreadyInUse) {
+        return res.status(409).json({ message: 'Email already in use' });
     }
 
     const hashedPassword = await generateHash(password);
