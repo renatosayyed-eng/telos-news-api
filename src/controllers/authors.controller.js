@@ -17,6 +17,15 @@ const authors = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+    {
+        id: 'df4fd06a-4e2f-4039-b8e4-221a3ac8ebed',
+        name: 'George R. R. Martin',
+        biography: 'George Raymond Richard Martin, also known as GRRM, is an American novelist and short story writer, screenwriter, and television producer.',
+        email: 'grr@gmail.com',
+        password: '$2a$08$TLXys8txEmo9DVlGDAW1MOcJYkIFDtlJa1RWYtubOx9wAIQqC7qW2',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    },
 ];
 
 const createAuthor = async (req, res) => {

@@ -5,6 +5,8 @@ const express = require('express');
 const authenticateRoutes = require('./routes/authenticate.routes');
 // Importing the routes to the authors
 const authorsRoutes = require('./routes/authors.routes');
+// Importing the routes to the articles
+const newsRoutes = require('./routes/news.routes');
 
 // Importing the environment variables
 const { PORT } = require('./config/env');
@@ -14,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(authenticateRoutes);
 app.use(authorsRoutes);
+app.use(newsRoutes);
 
 // Setting up the default route
 app.get('/', (req, res) => {
